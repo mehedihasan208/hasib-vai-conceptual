@@ -4,6 +4,7 @@ import Layout from '../layout/Layout';
 import Home from '../components/Home/Home';
 import About from '../components/About/About';
 import Product from '../components/Product/Product';
+import Products from '../components/Products/Products';
 
 const creatRouter = createBrowserRouter([
     {
@@ -22,6 +23,11 @@ const creatRouter = createBrowserRouter([
                 path:"/product",
                 element:<Product></Product>,
                 loader:()=>fetch( `https://dummyjson.com/products`)
+            },
+            {
+                path:"/products/:id",
+                element:<Products></Products>,
+                loader:(object)=>fetch(`https://dummyjson.com/products${object.params.id}`)
             }
         ]
     }
